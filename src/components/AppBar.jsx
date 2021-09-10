@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import Sidebar from "./Sidebar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Appbar = () => {
   const classes = useStyles();
+
+  const [algorithm, setAlgorithm] = React.useState("Algorithm");
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -36,11 +40,12 @@ const Appbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            News
+            {algorithm}
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Sort</Button>
         </Toolbar>
       </AppBar>
+      <Sidebar selectAlgorithm={(algorithm) => setAlgorithm(algorithm)} />
     </div>
   );
 };
