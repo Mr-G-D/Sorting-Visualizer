@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import MailIcon from "@material-ui/icons/Mail";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import React from "react";
+import React, { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,14 +56,21 @@ const drawerWidth = 240;
 
 const Sidebar = (props) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
-  // const handleDrawerOpen = () => {
-  //   setOpen(true);
-  // };
+  useEffect(() => {
+    if (props.data === true) {
+      handleDrawerOpen();
+    }
+  }, [props.data]);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
   const handleDrawerClose = () => {
     setOpen(false);
+    props.hideSidebar();
   };
   return (
     <Drawer
@@ -86,6 +93,7 @@ const Sidebar = (props) => {
             onClick={() => {
               props.selectAlgorithm(text);
               handleDrawerClose();
+              props.hideSidebar();
             }}
             button
             key={text}

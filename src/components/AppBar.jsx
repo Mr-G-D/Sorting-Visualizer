@@ -27,11 +27,18 @@ const Appbar = () => {
 
   const [algorithm, setAlgorithm] = React.useState("Algorithm");
 
+  const [sidebar, setSidebar] = React.useState(false);
+
+  const showSidebar = () => {
+    setSidebar(true);
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
+            onClick={showSidebar}
             edge="start"
             className={classes.menuButton}
             color="inherit"
@@ -45,7 +52,11 @@ const Appbar = () => {
           <Button color="inherit">Sort</Button>
         </Toolbar>
       </AppBar>
-      <Sidebar selectAlgorithm={(algorithm) => setAlgorithm(algorithm)} />
+      <Sidebar
+        data={sidebar}
+        selectAlgorithm={(algorithm) => setAlgorithm(algorithm)}
+        hideSidebar={() => setSidebar(false)}
+      />
     </div>
   );
 };
