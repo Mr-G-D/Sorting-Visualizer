@@ -58,9 +58,9 @@ const Sidebar = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
-  //   const handleDrawerOpen = () => {
-  //     setOpen(true);
-  //   };
+  // const handleDrawerOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -83,7 +83,10 @@ const Sidebar = (props) => {
       <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (
           <ListItem
-            onClick={() => props.selectAlgorithm(text)}
+            onClick={() => {
+              props.selectAlgorithm(text);
+              handleDrawerClose();
+            }}
             button
             key={text}
           >
