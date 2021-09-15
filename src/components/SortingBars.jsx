@@ -1,10 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
+import { Button } from "@material-ui/core";
 
-let array = [];
-for (let i = 0; i < 200; i++) {
-  array.push(Math.random() * 500 + 10);
-}
+let array = [200, 300];
+const animate = (a, b) => {};
 
 const SortingBars = () => {
   const styles = useStyles();
@@ -16,7 +15,7 @@ const SortingBars = () => {
             key={bar}
             style={{
               height: bar,
-              backgroundColor: "#ff0000",
+              backgroundColor: "dodgerblue",
               width: 5,
               marginRight: 1,
               borderRadius: "50px",
@@ -26,6 +25,14 @@ const SortingBars = () => {
       </div>
 
       <hr className={styles.hr} />
+      <Button
+        onClick={() => animate(array[0], array[1])}
+        variant="contained"
+        color="primary"
+        className={styles.button}
+      >
+        Animate
+      </Button>
     </div>
   );
 };
@@ -47,5 +54,10 @@ const useStyles = makeStyles({
   },
   hr: {
     margin: "0px",
+    position: "relative",
+  },
+  button: {
+    marginLeft: "47%",
+    marginRight: "47%",
   },
 });
