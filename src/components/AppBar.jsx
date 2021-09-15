@@ -47,7 +47,7 @@ const Appbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            {algorithm}
+            {algorithm} Sort
           </Typography>
           <Button color="inherit">Sort</Button>
         </Toolbar>

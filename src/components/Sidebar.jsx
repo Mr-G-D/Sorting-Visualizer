@@ -7,7 +7,7 @@ import {
   ListItemText,
   makeStyles,
 } from "@material-ui/core";
-import MailIcon from "@material-ui/icons/Mail";
+import SortIcon from "@material-ui/icons/Sort";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import React, { useEffect } from "react";
 
@@ -47,7 +47,7 @@ const Sidebar = (props) => {
         </IconButton>
       </div>
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
+        {["Insertion", "Selection", "Merge", "Quick"].map((text, index) => (
           <ListItem
             onClick={() => {
               props.selectAlgorithm(text);
@@ -58,7 +58,7 @@ const Sidebar = (props) => {
             key={text}
           >
             <ListItemIcon>
-              <MailIcon />
+              <SortIcon />
             </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
