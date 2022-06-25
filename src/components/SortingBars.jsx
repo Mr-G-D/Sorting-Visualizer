@@ -1,17 +1,27 @@
-import React from "react";
-import { makeStyles } from "@material-ui/styles";
-import { Button } from "@material-ui/core";
-
-let array = [200, 300];
-const animate = (a, b) => {};
+import React, { useState } from "react";
+import { Button, makeStyles } from "@material-ui/core";
 
 const SortingBars = () => {
+  let random = [200, 300, 430, 100, 322, 493, 268, 500];
+
+  const [array, setArray] = useState(random);
+
+  const sortArray = (array) => {
+    for (let index = 0; index < array.length; index++) {
+      array[index] += 100;
+      setTimeout(() => {
+        setArray([...array]);
+      }, 300);
+    }
+  };
+
   const styles = useStyles();
   return (
     <div className={styles.main}>
       <div className={styles.body}>
         {array.map((bar) => (
           <div
+            className={bar}
             key={bar}
             style={{
               height: bar,
@@ -26,7 +36,7 @@ const SortingBars = () => {
 
       <hr className={styles.hr} />
       <Button
-        onClick={() => animate(array[0], array[1])}
+        onClick={() => sortArray(array)}
         variant="contained"
         color="primary"
         className={styles.button}
