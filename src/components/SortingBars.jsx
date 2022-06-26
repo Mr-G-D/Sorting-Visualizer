@@ -8,7 +8,9 @@ const SortingBars = () => {
   ];
 
   const [array, setArray] = useState(random);
-
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
   const sortArray = async (array) => {
     let temp, j;
     for (let index = 0; index < array.length; index++) {
@@ -20,6 +22,7 @@ const SortingBars = () => {
           await swap(array[j + 1], array[j]);
           setArray([...array]);
           j--;
+          await sleep(1000);
         }
         array[j + 1] = temp;
       }
