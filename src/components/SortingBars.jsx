@@ -5,6 +5,7 @@ import { InsertionSort } from "./SortingAlgorithms/InsertionSort";
 const SortingBars = () => {
   let random = [
     600, 500, 400, 100, 200, 300, 600, 500, 400, 100, 200, 300, 600, 500, 400,
+    100, 200, 300,
   ];
 
   const [array, setArray] = useState(random);
@@ -20,10 +21,11 @@ const SortingBars = () => {
         {array.map((bar) => (
           <div
             className={bar}
+            id={bar}
             style={{
               height: bar,
               backgroundColor: "dodgerblue",
-              width: 5,
+              width: 50,
               marginRight: 1,
               borderRadius: "50px",
             }}

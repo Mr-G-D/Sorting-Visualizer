@@ -1,4 +1,4 @@
-import { sleep, swap } from "../Helper/helper";
+import { dehighlight, highlight, sleep, swap } from "../Helper/helper";
 
 export async function InsertionSort(array, setArray) {
   let temp, j;
@@ -9,11 +9,11 @@ export async function InsertionSort(array, setArray) {
       while (j >= 0 && array[j] > temp) {
         array[j + 1] = array[j];
         await swap(array[j + 1], array[j]);
-        setArray([...array]);
         j--;
-        await sleep(1000);
       }
       array[j + 1] = temp;
+      setArray([...array]);
+      await sleep(500);
     }
   }
 }
