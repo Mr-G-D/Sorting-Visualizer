@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Appbar = () => {
+const Appbar = (props) => {
   const classes = useStyles();
 
   const [algorithm, setAlgorithm] = React.useState("Algorithm");
@@ -49,7 +49,9 @@ const Appbar = () => {
           <Typography variant="h6" className={classes.title}>
             {algorithm} Sort
           </Typography>
-          <Button color="inherit">Sort</Button>
+          <Button onClick={() => props.function(props.array)} color="inherit">
+            Sort
+          </Button>
         </Toolbar>
       </AppBar>
       <Sidebar

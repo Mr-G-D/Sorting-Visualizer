@@ -1,4 +1,4 @@
-import { dehighlight, highlight, sleep, swap } from "../Helper/helper";
+import { sleep, swap } from "../Helper/helper";
 
 export async function InsertionSort(array, setArray) {
   let temp, j;

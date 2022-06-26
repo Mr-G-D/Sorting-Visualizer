@@ -1,24 +1,12 @@
-import React, { useState } from "react";
-import { Button, makeStyles } from "@material-ui/core";
-import { InsertionSort } from "./SortingAlgorithms/InsertionSort";
+import React from "react";
+import { makeStyles } from "@material-ui/core";
 
-const SortingBars = () => {
-  let random = [
-    600, 500, 400, 100, 200, 300, 600, 500, 400, 100, 200, 300, 600, 500, 400,
-    100, 200, 300,
-  ];
-
-  const [array, setArray] = useState(random);
-
-  const sortArray = async (array) => {
-    InsertionSort(array, setArray);
-  };
-
+const SortingBars = (props) => {
   const styles = useStyles();
   return (
     <div className={styles.main}>
       <div className={styles.body}>
-        {array.map((bar) => (
+        {props.array.map((bar) => (
           <div
             className={bar}
             id={bar}
@@ -34,14 +22,14 @@ const SortingBars = () => {
       </div>
 
       <hr className={styles.hr} />
-      <Button
+      {/* <Button
         onClick={() => sortArray(array)}
         variant="contained"
         color="primary"
         className={styles.button}
       >
         Animate
-      </Button>
+      </Button> */}
     </div>
   );
 };
