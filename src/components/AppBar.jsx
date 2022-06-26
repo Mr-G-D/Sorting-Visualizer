@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Button,
@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
 const Appbar = (props) => {
   const classes = useStyles();
 
-  const [algorithm, setAlgorithm] = React.useState("Algorithm");
+  const [algorithm, setAlgorithm] = useState("Insertion");
 
-  const [sidebar, setSidebar] = React.useState(false);
+  const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => {
     setSidebar(true);
@@ -49,7 +49,10 @@ const Appbar = (props) => {
           <Typography variant="h6" className={classes.title}>
             {algorithm} Sort
           </Typography>
-          <Button onClick={() => props.function(props.array)} color="inherit">
+          <Button onClick={() => window.location.reload()} color="inherit">
+            Generate New Array
+          </Button>
+          <Button onClick={() => props.sortArray(props.array)} color="inherit">
             Sort
           </Button>
         </Toolbar>

@@ -6,10 +6,14 @@ import { InsertionSort } from "./components/SortingAlgorithms/InsertionSort";
 import SortingBars from "./components/SortingBars";
 
 function App() {
-  const [array, setArray] = useState(generateArray(50));
+  const [array, setArray] = useState([]);
+
+  const newArray = (len = 50) => {
+    generateArray(len, setArray);
+  };
 
   useEffect(() => {
-    setArray(generateArray(50));
+    newArray(50);
   }, []);
 
   const sortArray = async (array) => {
@@ -17,7 +21,7 @@ function App() {
   };
   return (
     <div className="app">
-      <Appbar function={sortArray} array={array} />
+      <Appbar sortArray={sortArray} array={array} />
       <SortingBars array={array} />
     </div>
   );

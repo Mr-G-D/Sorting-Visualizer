@@ -12,8 +12,8 @@ export async function InsertionSort(array, setArray) {
         j--;
       }
       array[j + 1] = temp;
-      setArray([...array]);
       await sleep(500);
+      setArray([...array]);
     }
   }
 }
