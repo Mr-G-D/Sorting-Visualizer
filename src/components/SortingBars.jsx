@@ -8,31 +8,9 @@ const SortingBars = () => {
   ];
 
   const [array, setArray] = useState(random);
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-  const sortArray = async (array) => {
-    let temp, j;
-    for (let index = 0; index < array.length; index++) {
-      for (let i = 1; i < array.length; i++) {
-        temp = array[i];
-        j = i - 1;
-        while (j >= 0 && array[j] > temp) {
-          array[j + 1] = array[j];
-          await swap(array[j + 1], array[j]);
-          setArray([...array]);
-          j--;
-          await sleep(1000);
-        }
-        array[j + 1] = temp;
-      }
-    }
-  };
 
-  const swap = async (a, b) => {
-    let temp = a;
-    a = b;
-    b = temp;
+  const sortArray = async (array) => {
+    InsertionSort(array, setArray);
   };
 
   const styles = useStyles();
