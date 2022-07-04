@@ -22,10 +22,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Appbar = (props) => {
+const Appbar = ({ array, sortArray, algorithm, setAlgorithm }) => {
   const classes = useStyles();
-
-  const [algorithm, setAlgorithm] = useState("Insertion");
 
   const [sidebar, setSidebar] = useState(false);
 
@@ -52,7 +50,7 @@ const Appbar = (props) => {
           <Button onClick={() => window.location.reload()} color="inherit">
             Generate New Array
           </Button>
-          <Button onClick={() => props.sortArray(props.array)} color="inherit">
+          <Button onClick={() => sortArray(array)} color="inherit">
             Sort
           </Button>
         </Toolbar>
