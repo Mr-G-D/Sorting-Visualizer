@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Appbar from "./components/AppBar";
-import { Insertion, Selection } from "./components/Helper/constants";
+import { Insertion, Quick, Selection } from "./components/Helper/constants";
 import { generateArray } from "./components/Helper/helper";
 import { InsertionSort } from "./components/SortingAlgorithms/InsertionSort";
+import { QuickSort } from "./components/SortingAlgorithms/QuickSort";
 import { SelectionSort } from "./components/SortingAlgorithms/SelectionSort";
 import SortingBars from "./components/SortingBars";
 
@@ -25,8 +26,10 @@ function App() {
         InsertionSort(array, setArray);
         break;
       case Selection:
-        console.log("working");
         SelectionSort(array, setArray);
+        break;
+      case Quick:
+        QuickSort(array, 0, array.length - 1, setArray);
         break;
       default:
         console.log("Not algo");
