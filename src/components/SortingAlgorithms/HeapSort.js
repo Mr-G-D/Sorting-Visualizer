@@ -36,7 +36,7 @@ async function heapify(array, n, i, setArray) {
   // If largest is not root
   if (largest !== i) {
     [array[i], array[largest]] = [array[largest], array[i]];
-    await sleep(500);
+    await sleep(200);
     setArray([...array]);
 
     // Recursively heapify the affected sub-tree

@@ -14,6 +14,10 @@ export async function InsertionSort(array, setArray) {
       array[j + 1].color = "green";
       await sleep(500);
       setArray([...array]);
+
+      for (let k = 0; k <= i; k++) {
+        array[k].color = "green";
+      }
     }
 
     for (let k = 0; k <= index; k++) {

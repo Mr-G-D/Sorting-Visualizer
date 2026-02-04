@@ -17,8 +17,11 @@ import { HeapSort } from "./components/SortingAlgorithms/HeapSort";
 import SortingBars from "./components/SortingBars";
 
 function App() {
+  const [algorithm, setAlgorithm] = useState(() => {
+    const saved = localStorage.getItem("selectedAlgorithm");
+    return saved || Insertion;
+  });
   const [array, setArray] = useState([]);
-  const [algorithm, setAlgorithm] = useState(Insertion);
 
   const newArray = (len = 50) => {
     generateArray(len, setArray);
@@ -49,13 +52,19 @@ function App() {
         console.log("Not algo");
     }
   };
+
+  const updateAlgorithm = (algo) => {
+    setAlgorithm(algo);
+    localStorage.setItem("selectedAlgorithm", algo);
+  };
+
   return (
     <div className="app">
       <Appbar
         sortArray={sortArray}
         array={array}
         algorithm={algorithm}
-        setAlgorithm={setAlgorithm}
+        setAlgorithm={updateAlgorithm}
       />
       <SortingBars array={array} />
     </div>
