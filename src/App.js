@@ -31,19 +31,19 @@ function App() {
   const sortArray = async (array) => {
     switch (algorithm) {
       case Insertion:
-        InsertionSort(array, setArray);
+        await InsertionSort(array, setArray);
         break;
       case Selection:
-        SelectionSort(array, setArray);
+        await SelectionSort(array, setArray);
         break;
       case Quick:
-        QuickSort(array, 0, array.length - 1, setArray);
+        await QuickSort(array, 0, array.length - 1, setArray);
         break;
       case Merge:
-        MergeSort(array, setArray);
+        await MergeSort(array, setArray);
         break;
       case Heap:
-        HeapSort(array, setArray);
+        await HeapSort(array, setArray);
         break;
       default:
         console.log("Not algo");

@@ -8,16 +8,18 @@ export async function HeapSort(array, setArray) {
     await heapify(array, n, i, setArray);
   }
 
-  // One by one extract an element from heap
   for (let i = n - 1; i > 0; i--) {
-    // Move current root to end
     [array[0], array[i]] = [array[i], array[0]];
+    array[i].color = "green";
     await sleep(500);
     setArray([...array]);
 
-    // call max heapify on the reduced heap
     await heapify(array, i, 0, setArray);
   }
+
+  array[0].color = "green";
+  await sleep(500);
+  setArray([...array]);
 }
 
 async function heapify(array, n, i, setArray) {
@@ -26,10 +28,10 @@ async function heapify(array, n, i, setArray) {
   let r = 2 * i + 2; // right = 2*i + 2
 
   // If left child is larger than root
-  if (l < n && array[l] > array[largest]) largest = l;
+  if (l < n && array[l].value > array[largest].value) largest = l;
 
   // If right child is larger than largest so far
-  if (r < n && array[r] > array[largest]) largest = r;
+  if (r < n && array[r].value > array[largest].value) largest = r;
 
   // If largest is not root
   if (largest !== i) {

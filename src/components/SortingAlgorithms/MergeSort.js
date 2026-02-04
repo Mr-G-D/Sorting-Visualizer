@@ -25,6 +25,12 @@ const mergeSortHelper = async (array, left, right, setArray) => {
     await mergeSortHelper(array, mid + 1, right, setArray);
     // Merge the sorted halves
     await merge(array, left, mid, right, setArray);
+
+    for (let k = left; k <= right; k++) {
+      array[k].color = "green";
+    }
+    await sleep(500);
+    setArray([...array]);
   }
 };
 
@@ -47,7 +53,7 @@ const merge = async (array, left, mid, right, setArray) => {
 
   // Compare elements from left and right subarrays and merge them in sorted order
   while (i < leftArr.length && j < rightArr.length) {
-    if (leftArr[i] <= rightArr[j]) {
+    if (leftArr[i].value <= rightArr[j].value) {
       array[k] = leftArr[i];
       i++;
     } else {

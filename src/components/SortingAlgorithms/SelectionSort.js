@@ -5,7 +5,7 @@ export async function SelectionSort(array, setArray) {
     let min = i;
 
     for (let j = i + 1; j < array.length; j++) {
-      if (array[j] < array[min]) {
+      if (array[j].value < array[min].value) {
         min = j;
       }
     }
@@ -15,7 +15,12 @@ export async function SelectionSort(array, setArray) {
       array[min] = temp;
       //   console.log(array);
     }
+    array[i].color = "green";
     await sleep(500);
     setArray([...array]);
   }
+
+  array[array.length - 1].color = "green";
+  await sleep(500);
+  setArray([...array]);
 }

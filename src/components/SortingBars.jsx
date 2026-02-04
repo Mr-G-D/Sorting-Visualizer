@@ -8,11 +8,12 @@ const SortingBars = (props) => {
       <div className={styles.body}>
         {props.array.map((bar) => (
           <div
-            className={bar}
-            id={bar}
+            key={bar.id}
+            className="bar"
+            id={bar.id}
             style={{
-              height: bar,
-              backgroundColor: "dodgerblue",
+              height: bar.value,
+              backgroundColor: bar.color,
               width: 50,
               marginRight: 1,
               borderRadius: "50px",
