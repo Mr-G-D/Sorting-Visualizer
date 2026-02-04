@@ -25,12 +25,6 @@ const mergeSortHelper = async (array, left, right, setArray) => {
     await mergeSortHelper(array, mid + 1, right, setArray);
     // Merge the sorted halves
     await merge(array, left, mid, right, setArray);
-
-    for (let k = left; k <= right; k++) {
-      array[k].color = "green";
-    }
-    await sleep(500);
-    setArray([...array]);
   }
 };
 
@@ -43,9 +37,8 @@ const mergeSortHelper = async (array, left, right, setArray) => {
  * @param {function} setArray - State setter to update the array in the UI
  */
 const merge = async (array, left, mid, right, setArray) => {
-  // Create copies of the left and right subarrays
-  const leftArr = array.slice(left, mid + 1);
-  const rightArr = array.slice(mid + 1, right + 1);
+  const leftArr = array.slice(left, mid + 1).map(item => item.value);
+  const rightArr = array.slice(mid + 1, right + 1).map(item => item.value);
 
   let i = 0, // Pointer for left subarray
     j = 0, // Pointer for right subarray
@@ -53,32 +46,47 @@ const merge = async (array, left, mid, right, setArray) => {
 
   // Compare elements from left and right subarrays and merge them in sorted order
   while (i < leftArr.length && j < rightArr.length) {
-    if (leftArr[i].value <= rightArr[j].value) {
-      array[k] = leftArr[i];
+    if (leftArr[i] <= rightArr[j]) {
+      array[k].value = leftArr[i];
       i++;
     } else {
-      array[k] = rightArr[j];
+      array[k].value = rightArr[j];
       j++;
     }
     k++;
+    if (left === 0) {
+      array[k - 1].color = "green";
+    } else {
+      array[k - 1].color = "orange";
+    }
     await sleep(500);
     setArray([...array]);
   }
 
   // Add remaining elements from left subarray
   while (i < leftArr.length) {
-    array[k] = leftArr[i];
+    array[k].value = leftArr[i];
     i++;
     k++;
+    if (left === 0) {
+      array[k - 1].color = "green";
+    } else {
+      array[k - 1].color = "orange";
+    }
     await sleep(500);
     setArray([...array]);
   }
 
   // Add remaining elements from right subarray
   while (j < rightArr.length) {
-    array[k] = rightArr[j];
+    array[k].value = rightArr[j];
     j++;
     k++;
+    if (left === 0) {
+      array[k - 1].color = "green";
+    } else {
+      array[k - 1].color = "orange";
+    }
     await sleep(500);
     setArray([...array]);
   }
