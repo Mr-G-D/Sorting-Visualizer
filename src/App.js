@@ -6,17 +6,22 @@ import {
   Quick,
   Selection,
   Merge,
+  Heap,
 } from "./components/Helper/constants";
 import { generateArray } from "./components/Helper/helper";
 import { InsertionSort } from "./components/SortingAlgorithms/InsertionSort";
 import { QuickSort } from "./components/SortingAlgorithms/QuickSort";
 import { SelectionSort } from "./components/SortingAlgorithms/SelectionSort";
 import { MergeSort } from "./components/SortingAlgorithms/MergeSort";
+import { HeapSort } from "./components/SortingAlgorithms/HeapSort";
 import SortingBars from "./components/SortingBars";
 
 function App() {
+  const [algorithm, setAlgorithm] = useState(() => {
+    const saved = localStorage.getItem("selectedAlgorithm");
+    return saved || Insertion;
+  });
   const [array, setArray] = useState([]);
-  const [algorithm, setAlgorithm] = useState(Insertion);
 
   const newArray = (len = 50) => {
     generateArray(len, setArray);
@@ -29,28 +34,37 @@ function App() {
   const sortArray = async (array) => {
     switch (algorithm) {
       case Insertion:
-        InsertionSort(array, setArray);
+        await InsertionSort(array, setArray);
         break;
       case Selection:
-        SelectionSort(array, setArray);
+        await SelectionSort(array, setArray);
         break;
       case Quick:
-        QuickSort(array, 0, array.length - 1, setArray);
+        await QuickSort(array, 0, array.length - 1, setArray);
         break;
       case Merge:
-        MergeSort(array, setArray);
+        await MergeSort(array, setArray);
+        break;
+      case Heap:
+        await HeapSort(array, setArray);
         break;
       default:
         console.log("Not algo");
     }
   };
+
+  const updateAlgorithm = (algo) => {
+    setAlgorithm(algo);
+    localStorage.setItem("selectedAlgorithm", algo);
+  };
+
   return (
     <div className="app">
       <Appbar
         sortArray={sortArray}
         array={array}
         algorithm={algorithm}
-        setAlgorithm={setAlgorithm}
+        setAlgorithm={updateAlgorithm}
       />
       <SortingBars array={array} />
     </div>

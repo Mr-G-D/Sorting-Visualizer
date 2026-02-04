@@ -6,13 +6,24 @@ export async function InsertionSort(array, setArray) {
     for (let i = 1; i < array.length; i++) {
       temp = array[i];
       j = i - 1;
-      while (j >= 0 && array[j] > temp) {
+      while (j >= 0 && array[j].value > temp.value) {
         array[j + 1] = array[j];
         j--;
       }
       array[j + 1] = temp;
+      array[j + 1].color = "green";
       await sleep(500);
       setArray([...array]);
+
+      for (let k = 0; k <= i; k++) {
+        array[k].color = "green";
+      }
     }
+
+    for (let k = 0; k <= index; k++) {
+      array[k].color = "green";
+    }
+    await sleep(500);
+    setArray([...array]);
   }
 }

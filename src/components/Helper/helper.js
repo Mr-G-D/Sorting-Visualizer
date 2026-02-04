@@ -16,7 +16,8 @@ export const generateArray = (len, setArray) => {
   const min = 100,
     max = 600;
   for (let index = 0; index < len; index++) {
-    array.push(Math.floor(Math.random() * (max - min) + min));
+    const value = Math.floor(Math.random() * (max - min) + min);
+    array.push({ id: index, value, color: "dodgerblue" });
   }
   setArray([...array]);
 };
