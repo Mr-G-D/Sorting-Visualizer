@@ -43,17 +43,29 @@ const buildMaxHeap = async (array, setArray) => {
 };
 
 /**
- * Sorts an array using the Heap Sort algorithm.
+ * Extracts the maximum element from the heap repeatedly until the array is sorted.
+ * Swaps the root with the last heap element, shrinks the heap, and restores the
+ * max-heap property at the root.
  *
- * Phase 1 (build max-heap) is implemented below.
- * TODO: Phase 2 — repeatedly swap the root with the last heap element,
- *       shrink the heap, and call heapify on the root until the array is sorted.
+ * @param {number[]} array - The max-heap array to sort in-place
+ * @param {function} setArray - State setter to update the array in the UI
+ */
+const extractMax = async (array, setArray) => {
+  for (let heapSize = array.length - 1; heapSize > 0; heapSize--) {
+    [array[0], array[heapSize]] = [array[heapSize], array[0]];
+    await sleep(500);
+    setArray([...array]);
+    await heapify(array, heapSize, 0, setArray);
+  }
+};
+
+/**
+ * Sorts an array using the Heap Sort algorithm.
  *
  * @param {number[]} array - The array to be sorted
  * @param {function} setArray - State setter to update the array in the UI
  */
 export const HeapSort = async (array, setArray) => {
   await buildMaxHeap(array, setArray);
-
-  // TODO: implement extraction loop (issue #2)
+  await extractMax(array, setArray);
 };
