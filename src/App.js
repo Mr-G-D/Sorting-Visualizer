@@ -6,12 +6,14 @@ import {
   Quick,
   Selection,
   Merge,
+  Cocktail,
 } from "./components/Helper/constants";
 import { generateArray } from "./components/Helper/helper";
 import { InsertionSort } from "./components/SortingAlgorithms/InsertionSort";
 import { QuickSort } from "./components/SortingAlgorithms/QuickSort";
 import { SelectionSort } from "./components/SortingAlgorithms/SelectionSort";
 import { MergeSort } from "./components/SortingAlgorithms/MergeSort";
+import { CocktailShakerSort } from "./components/SortingAlgorithms/CocktailShakerSort";
 import SortingBars from "./components/SortingBars";
 
 function App() {
@@ -39,6 +41,9 @@ function App() {
         break;
       case Merge:
         MergeSort(array, setArray);
+        break;
+      case Cocktail:
+        CocktailShakerSort(array, setArray);
         break;
       default:
         console.log("Not algo");
