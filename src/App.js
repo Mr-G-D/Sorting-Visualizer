@@ -19,9 +19,11 @@ import SortingBars from "./components/SortingBars";
 function App() {
   const [array, setArray] = useState([]);
   const [algorithm, setAlgorithm] = useState(Insertion);
+  const [barColors, setBarColors] = useState([]);
 
   const newArray = (len = 50) => {
     generateArray(len, setArray);
+    setBarColors([]);
   };
 
   useEffect(() => {
@@ -29,6 +31,10 @@ function App() {
   }, []);
 
   const sortArray = async (array) => {
+    if (algorithm !== Heap) {
+      setBarColors([]);
+    }
+
     switch (algorithm) {
       case Insertion:
         InsertionSort(array, setArray);
@@ -43,7 +49,7 @@ function App() {
         MergeSort(array, setArray);
         break;
       case Heap:
-        HeapSort(array, setArray);
+        HeapSort(array, setArray, { setBarColors });
         break;
       default:
         console.log("Not algo");
@@ -57,7 +63,11 @@ function App() {
         algorithm={algorithm}
         setAlgorithm={setAlgorithm}
       />
-      <SortingBars array={array} />
+      <SortingBars
+        array={array}
+        barColors={barColors}
+        showHeapLegend={algorithm === Heap}
+      />
     </div>
   );
 }
