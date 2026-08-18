@@ -7,6 +7,7 @@ import {
   Selection,
   Merge,
   Cocktail,
+  Heap,
 } from "./components/Helper/constants";
 import { generateArray } from "./components/Helper/helper";
 import { InsertionSort } from "./components/SortingAlgorithms/InsertionSort";
@@ -14,14 +15,17 @@ import { QuickSort } from "./components/SortingAlgorithms/QuickSort";
 import { SelectionSort } from "./components/SortingAlgorithms/SelectionSort";
 import { MergeSort } from "./components/SortingAlgorithms/MergeSort";
 import { CocktailShakerSort } from "./components/SortingAlgorithms/CocktailShakerSort";
+import { HeapSort } from "./components/SortingAlgorithms/HeapSort";
 import SortingBars from "./components/SortingBars";
 
 function App() {
   const [array, setArray] = useState([]);
   const [algorithm, setAlgorithm] = useState(Insertion);
+  const [barColors, setBarColors] = useState([]);
 
   const newArray = (len = 50) => {
     generateArray(len, setArray);
+    setBarColors([]);
   };
 
   useEffect(() => {
@@ -29,6 +33,10 @@ function App() {
   }, []);
 
   const sortArray = async (array) => {
+    if (algorithm !== Heap) {
+      setBarColors([]);
+    }
+
     switch (algorithm) {
       case Insertion:
         InsertionSort(array, setArray);
@@ -45,6 +53,9 @@ function App() {
       case Cocktail:
         CocktailShakerSort(array, setArray);
         break;
+      case Heap:
+        HeapSort(array, setArray, { setBarColors });
+        break;
       default:
         console.log("Not algo");
     }
@@ -57,7 +68,11 @@ function App() {
         algorithm={algorithm}
         setAlgorithm={setAlgorithm}
       />
-      <SortingBars array={array} />
+      <SortingBars
+        array={array}
+        barColors={barColors}
+        showHeapLegend={algorithm === Heap}
+      />
     </div>
   );
 }
