@@ -8,4 +8,6 @@ export const Merge = "Merge";
 
 export const Heap = "Heap";
 
+export const Bubble = "Bubble";
+
 export const Cocktail = "Cocktail";
