@@ -1,5 +1,7 @@
 export const Insertion = "Insertion";
 
+export const Shell = "Shell";
+
 export const Selection = "Selection";
 
 export const Quick = "Quick";

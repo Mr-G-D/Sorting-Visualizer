@@ -3,6 +3,7 @@ import "./App.css";
 import Appbar from "./components/AppBar";
 import {
   Insertion,
+  Shell,
   Quick,
   Selection,
   Merge,
@@ -12,6 +13,7 @@ import {
 } from "./components/Helper/constants";
 import { generateArray } from "./components/Helper/helper";
 import { InsertionSort } from "./components/SortingAlgorithms/InsertionSort";
+import { ShellSort } from "./components/SortingAlgorithms/ShellSort";
 import { QuickSort } from "./components/SortingAlgorithms/QuickSort";
 import { SelectionSort } from "./components/SortingAlgorithms/SelectionSort";
 import { MergeSort } from "./components/SortingAlgorithms/MergeSort";
@@ -42,6 +44,9 @@ function App() {
     switch (algorithm) {
       case Insertion:
         InsertionSort(array, setArray);
+        break;
+      case Shell:
+        ShellSort(array, setArray);
         break;
       case Selection:
         SelectionSort(array, setArray);
