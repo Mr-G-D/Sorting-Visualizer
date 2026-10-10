@@ -3,17 +3,21 @@ import "./App.css";
 import Appbar from "./components/AppBar";
 import {
   Insertion,
+  Shell,
   Quick,
   Selection,
   Merge,
+  Bubble,
   Cocktail,
   Heap,
 } from "./components/Helper/constants";
 import { generateArray } from "./components/Helper/helper";
 import { InsertionSort } from "./components/SortingAlgorithms/InsertionSort";
+import { ShellSort } from "./components/SortingAlgorithms/ShellSort";
 import { QuickSort } from "./components/SortingAlgorithms/QuickSort";
 import { SelectionSort } from "./components/SortingAlgorithms/SelectionSort";
 import { MergeSort } from "./components/SortingAlgorithms/MergeSort";
+import { BubbleSort } from "./components/SortingAlgorithms/BubbleSort";
 import { CocktailShakerSort } from "./components/SortingAlgorithms/CocktailShakerSort";
 import { HeapSort } from "./components/SortingAlgorithms/HeapSort";
 import SortingBars from "./components/SortingBars";
@@ -41,6 +45,9 @@ function App() {
       case Insertion:
         InsertionSort(array, setArray);
         break;
+      case Shell:
+        ShellSort(array, setArray);
+        break;
       case Selection:
         SelectionSort(array, setArray);
         break;
@@ -49,6 +56,9 @@ function App() {
         break;
       case Merge:
         MergeSort(array, setArray);
+        break;
+      case Bubble:
+        BubbleSort(array, setArray);
         break;
       case Cocktail:
         CocktailShakerSort(array, setArray);

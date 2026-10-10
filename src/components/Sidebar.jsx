@@ -47,7 +47,7 @@ const Sidebar = (props) => {
         </IconButton>
       </div>
       <List>
-        {["Insertion", "Selection", "Merge", "Quick", "Cocktail", "Heap"].map((text, index) => (
+        {["Insertion", "Shell", "Selection", "Merge", "Quick", "Bubble", "Cocktail", "Heap"].map((text, index) => (
           <ListItem
             onClick={() => {
               props.selectAlgorithm(text);
