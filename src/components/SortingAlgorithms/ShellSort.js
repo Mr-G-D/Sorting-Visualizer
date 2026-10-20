@@ -1,21 +1,21 @@
 import { sleep } from "../Helper/helper";
 
 export async function ShellSort(array, setArray) {
-  const n = array.length;
+  const arr = [...array];
+  const n = arr.length;
 
   for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
     for (let i = gap; i < n; i++) {
-      const temp = array[i];
       let j = i;
 
-      while (j >= gap && array[j - gap] > temp) {
-        array[j] = array[j - gap];
+      // Move the element back one gap at a time so each step is rendered
+      while (j >= gap && arr[j - gap] > arr[j]) {
+        [arr[j], arr[j - gap]] = [arr[j - gap], arr[j]];
         j -= gap;
-      }
 
-      array[j] = temp;
-      await sleep(500);
-      setArray([...array]);
+        await sleep(500);
+        setArray([...arr]);
+      }
     }
   }
 }
